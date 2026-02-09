@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export const SkillCard: React.FC<SkillArea> = ({
   score,

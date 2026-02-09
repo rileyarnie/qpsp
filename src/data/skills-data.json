@@ -15,7 +15,7 @@
       "id": "career_skills",
       "score": 60,
       "label": "Career Skills",
-      "description": "Professional skills and career readiness",
+      "description": "Your professional abilities and readiness for the workplace",
       "recommendations": [
         "Participate in mock interviews and resume workshops",
         "Seek internship or job shadowing opportunities",
@@ -26,7 +26,7 @@
       "id": "life_skills",
       "score": 70,
       "label": "Life Skills",
-      "description": "Personal development and life management",
+      "description": "Your personal growth and everyday life management",
       "recommendations": [
         "Practice time management and organization",
         "Build financial literacy skills",

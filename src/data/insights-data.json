@@ -1,0 +1,36 @@
+{
+  "insights": [
+    {
+      "type": "strength",
+      "area": "academics",
+      "message": "You're strongest in academics—great foundation!"
+    },
+    {
+      "type": "growth",
+      "area": "entrepreneurship",
+      "message": "Entrepreneurship is your biggest growth opportunity"
+    },
+    {
+      "type": "momentum",
+      "area": "life_skills",
+      "message": "You're improving in life skills—keep it up!"
+    }
+  ],
+  "nextSteps": [
+    {
+      "priority": "high",
+      "action": "Complete career skills assessment",
+      "area": "career_skills"
+    },
+    {
+      "priority": "medium",
+      "action": "Explore entrepreneurship modules",
+      "area": "entrepreneurship"
+    },
+    {
+      "priority": "low",
+      "action": "Review academic progress",
+      "area": "academics"
+    }
+  ]
+}
