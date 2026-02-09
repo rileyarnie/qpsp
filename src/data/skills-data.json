@@ -1,0 +1,48 @@
+{
+  "skills": [
+    {
+      "id": "academic_skills",
+      "score": 80,
+      "label": "Academics",
+      "description": "Your academic performance and subject knowledge",
+      "recommendations": [
+        "Continue excelling in your coursework",
+        "Explore advanced topics in your strongest subjects",
+        "Consider tutoring others to reinforce your knowledge"
+      ]
+    },
+    {
+      "id": "career_skills",
+      "score": 60,
+      "label": "Career Skills",
+      "description": "Professional skills and career readiness",
+      "recommendations": [
+        "Participate in mock interviews and resume workshops",
+        "Seek internship or job shadowing opportunities",
+        "Develop communication and presentation skills"
+      ]
+    },
+    {
+      "id": "life_skills",
+      "score": 70,
+      "label": "Life Skills",
+      "description": "Personal development and life management",
+      "recommendations": [
+        "Practice time management and organization",
+        "Build financial literacy skills",
+        "Develop emotional intelligence and resilience"
+      ]
+    },
+    {
+      "id": "entrepreneurship_skills",
+      "score": 50,
+      "label": "Entrepreneurship",
+      "description": "Innovation, business thinking, and entrepreneurial mindset",
+      "recommendations": [
+        "Start a small project or side hustle",
+        "Learn about business fundamentals",
+        "Network with young entrepreneurs"
+      ]
+    }
+  ]
+}
