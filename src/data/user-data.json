@@ -1,0 +1,12 @@
+{
+  "id": "123",
+  "first_name": "Jane",
+  "last_name": "Doe",
+  "email": "jane@novapioneer.com",
+  "scores": {
+    "academics": 80,
+    "career_skills": 60,
+    "life_skills": 70,
+    "entrepreneurship": 50
+  }
+}

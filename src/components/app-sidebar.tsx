@@ -14,11 +14,6 @@ import {
 import bgSvg from "@/assets/logo-vertical-coloured-blue.svg";
 
 const data = {
-  user: {
-    name: "John Doe",
-    email: "john@novapioneer.com",
-  },
-
   navItems: [
     {
       name: "My Dashboard",
@@ -45,7 +40,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects navItems={data.navItems} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

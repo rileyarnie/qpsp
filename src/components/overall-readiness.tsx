@@ -14,24 +14,33 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ChartContainer, type ChartConfig } from "@/components/ui/chart";
-
-export const description = "A radial chart with a custom shape";
-
-const chartData = [
-  { browser: "safari", visitors: 1260, fill: "var(--color-safari)" },
-];
-
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  safari: {
-    label: "Safari",
-    color: "var(--chart-2)",
-  },
-} satisfies ChartConfig;
+import { useUser } from "@/context/UserContext";
+import { calculateAverageReadiness } from "@/lib/utils";
 
 export function OverallReadinessCard() {
+  const { user } = useUser();
+
+  if (!user) return null;
+
+  const averageScore = calculateAverageReadiness(user.scores);
+
+  const chartData = [
+    {
+      name: "overall",
+      value: averageScore,
+      fill: "#193063",
+    },
+  ];
+  const chartConfig = {
+    value: {
+      label: "Score",
+    },
+    overall: {
+      label: "Overall Readiness",
+      color: "#193063",
+    },
+  } satisfies ChartConfig;
+
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
@@ -48,7 +57,8 @@ export function OverallReadinessCard() {
           >
             <RadialBarChart
               data={chartData}
-              endAngle={100}
+              startAngle={90}
+              endAngle={90 - (averageScore / 100) * 360}
               innerRadius={80}
               outerRadius={110}
             >
@@ -59,7 +69,7 @@ export function OverallReadinessCard() {
                 className="first:fill-muted last:fill-background"
                 polarRadius={[86, 74]}
               />
-              <RadialBar dataKey="visitors" background />
+              <RadialBar dataKey="value" cornerRadius={10} />
               <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
                 <Label
                   content={({ viewBox }) => {
@@ -76,7 +86,7 @@ export function OverallReadinessCard() {
                             y={viewBox.cy}
                             className="fill-foreground text-4xl font-bold"
                           >
-                            65
+                            {averageScore}
                           </tspan>
                           <tspan
                             x={viewBox.cx}
