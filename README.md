@@ -1,75 +1,175 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Quest Dashboard
 
-Currently, two official plugins are available:
+A React + TypeScript + Vite dashboard that visualises a learner’s readiness across multiple skill areas using dummy JSON data and TanStack Router/Query.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### How to install and run the app locally
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Clone the repository**:
 
-Note: This will impact Vite dev & build performances.
+  ```bash
+  git https://github.com/rileyarnie/qpsp.git
+  ```
 
-## Expanding the ESLint configuration
+- **Requirements**: Node 18+ (recommended), npm.
+- **Install dependencies**:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  ```bash
+  npm install
+  ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Run in development**:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+  ```bash
+  npm run dev
+  ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+  Then open the printed `http://localhost:5173`.
+
+- **Build for production**:
+
+  ```bash
+  npm run build
+  ```
+
+---
+
+### Project structure
+
+```text
+
+src/
+├─ main.tsx
+├─ App.tsx
+├─ App.css
+├─ index.css
+├─ routeTree.gen.ts
+├─ assets/
+│  ├─ logo-vertical-coloured-blue.svg
+│  └─ react.svg
+├─ components/
+│  ├─ app-sidebar.tsx
+│  ├─ dashboard.tsx
+│  ├─ nav-projects.tsx
+│  ├─ nav-user.tsx
+│  ├─ overall-readiness.tsx
+│  ├─ insights/
+│  │  ├─ insights-list.tsx
+│  │  ├─ key-insight.tsx
+│  │  └─ key-recommendation.tsx
+│  ├─ skills/
+│  │  ├─ skill-card.tsx
+│  │  └─ skill-card-skeleton.tsx
+│  └─ ui/
+│     ├─ avatar.tsx
+│     ├─ badge.tsx
+│     ├─ breadcrumb.tsx
+│     ├─ button.tsx
+│     ├─ card.tsx
+│     ├─ chart.tsx
+│     ├─ collapsible.tsx
+│     ├─ dropdown-menu.tsx
+│     ├─ input.tsx
+│     ├─ progress.tsx
+│     ├─ separator.tsx
+│     ├─ sheet.tsx
+│     ├─ sidebar.tsx
+│     ├─ skeleton.tsx
+│     ├─ tabs.tsx
+│     └─ tooltip.tsx
+├─ context/
+│  ├─ UserContext.tsx
+│  └─ UserProvider.tsx
+├─ data/
+│  ├─ insights-data.json
+│  ├─ skills-data.json
+│  └─ user-data.json
+├─ hooks/
+│  └─ use-mobile.ts
+├─ lib/
+│  ├─ insights.ts
+│  ├─ skills.ts
+│  └─ utils.ts
+├─ routes/
+│  ├─ __root.tsx
+│  ├─ detail.tsx
+│  ├─ index.tsx
+│  └─ overview.tsx
+└─ types/
+  ├─ types.ts
+  └─ user.ts
 ```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Dummy data format 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+All dummy data lives in `src/data` and is consumed via small “lib” helpers and React Query or context.
 
-export default defineConfig([
-  globalIgnores(['dist']),
+- **Skills data – `skills-data.json`**
+
+  ```json
   {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
+    "skills": [
+      {
+        "id": "academic_skills",
+        "score": 80,
+        "label": "Academics",
+        "description": "Your academic performance and subject knowledge",
+        "recommendations": [
+          "Continue excelling in your coursework",
+          "Explore advanced topics in your strongest subjects",
+          "Consider tutoring others to reinforce your knowledge"
+        ]
+      }
+    ]
+  }
+  ```
+
+- **Insights data – `insights-data.json`**
+
+  ```json
+  {
+    "insights": [
+      {
+        "type": "strength",
+        "area": "academics",
+        "message": "You're strongest in academics with a great foundation!"
+      }
     ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+    "nextSteps": [
+      {
+        "priority": "high",
+        "action": "Explore entrepreneurship modules",
+        "area": "entrepreneurship",
+        "color": "red-500",
+        "message": "Your Entrepreneurship score is 50%, which needs attention"
+      }
+    ]
+  }
+  ```
+
+- **User data – `user-data.json`**
+
+  ```json
+  {
+    "id": "123",
+    "first_name": "Jane",
+    "last_name": "Doe",
+    "email": "jane@novapioneer.com",
+    "scores": {
+      "academics": 80,
+      "career_skills": 60,
+      "life_skills": 70,
+      "entrepreneurship": 50
+    }
+  }
+  ```
+
+---
+
+- **Assumptions**
+  - Single-user, read-only dashboard using static JSON.
+  - Scores are percentages from 0–100.
+  - Skill areas and categories are predefined.
