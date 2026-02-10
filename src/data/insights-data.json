@@ -3,7 +3,7 @@
     {
       "type": "strength",
       "area": "academics",
-      "message": "You're strongest in academics—great foundation!"
+      "message": "You're strongest in academics with a great foundation!"
     },
     {
       "type": "growth",
@@ -13,24 +13,30 @@
     {
       "type": "momentum",
       "area": "life_skills",
-      "message": "You're improving in life skills—keep it up!"
+      "message": "You're improving in life skills, keep it up!"
     }
   ],
   "nextSteps": [
     {
       "priority": "high",
-      "action": "Complete career skills assessment",
-      "area": "career_skills"
+      "action": "Explore entrepreneurship modules",
+      "area": "entrepreneurship",
+      "color": "red-500",
+      "message": "Your Entrepreneurship score is 50%, which needs attention"
     },
     {
       "priority": "medium",
-      "action": "Explore entrepreneurship modules",
-      "area": "entrepreneurship"
+      "action": "Complete career skills assessment",
+      "area": "career_skills",
+      "color": "yellow-500",
+      "message": "Your career skills could use some more active involvement"
     },
     {
       "priority": "low",
       "action": "Review academic progress",
-      "area": "academics"
+      "area": "academics",
+      "color": "blue-500",
+      "message": "You're excelling in Academics - keep the momentum!"
     }
   ]
 }

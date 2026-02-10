@@ -16,12 +16,15 @@ type PriorityType = "high" | "medium" | "low";
 export interface Insight {
   area: AreaType;
   message: string;
+  type: string;
 }
 
 export interface NextStep {
   priority: PriorityType;
   action: string;
   area: AreaType;
+  message: string;
+  color: string;
 }
 
 export interface InsightsReport {
